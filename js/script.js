@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // ==========================================
     // Theme Toggle Logic
     // ==========================================
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = themeToggleBtn.querySelector('i');
-    
+
     // Check for saved theme preference or system preference
     const savedTheme = localStorage.getItem('theme');
-    
+
     // Default is dark mode. If light is saved, apply it.
     if (savedTheme === 'light') {
         document.documentElement.setAttribute('data-theme', 'light');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     themeToggleBtn.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
-        
+
         if (currentTheme === 'light') {
             document.documentElement.removeAttribute('data-theme');
             localStorage.setItem('theme', 'dark');
@@ -56,14 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smooth Scrolling & Active Nav States
     // ==========================================
     const sections = document.querySelectorAll('section');
-    
+
     window.addEventListener('scroll', () => {
         let current = '';
         const scrollY = window.pageYOffset;
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
             // Subtract nav height + some offset for earlier trigger
             if (scrollY >= (sectionTop - 150)) {
                 current = section.getAttribute('id');
@@ -82,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Back to Top Button
     // ==========================================
     const backToTopBtn = document.getElementById('back-to-top');
-    
+
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 500) {
             backToTopBtn.classList.add('active');
@@ -121,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // Form Submission (Front-end only)
+    // Form Submission with EmailJS
     // ==========================================
     const contactForm = document.getElementById('contactForm');
     const formAlert = document.getElementById('formAlert');
@@ -129,29 +128,45 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            // Show alert
-            formAlert.style.display = 'block';
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Hide alert after 5 seconds
-            setTimeout(() => {
-                formAlert.style.display = 'none';
-            }, 5000);
+
+            // تجميع البيانات من الفورم بناءً على الـ IDs الموجودة عندك
+            const Data = {
+                to_email: "romanyrana82@gmail.com",
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // إرسال البيانات باستخدام EmailJS بالـ Service ID و Template ID اللي في صورتك
+            emailjs.send("service_5ys4akm", "template_5dfplfh", Data)
+                .then((response) => {
+                    // Show alert
+                    formAlert.style.display = 'block';
+
+                    // Reset form
+                    contactForm.reset();
+
+                    // Hide alert after 5 seconds
+                    setTimeout(() => {
+                        formAlert.style.display = 'none';
+                    }, 5000);
+                })
+                .catch((error) => {
+                    alert("Connection failed: " + JSON.stringify(error));
+                });
         });
     }
 
     // ==========================================
     // Add Project — Modal & Dynamic Cards
     // ==========================================
-    const addProjectBtn  = document.getElementById('add-project-btn');
-    const projectModal   = document.getElementById('project-modal');
-    const modalClose     = document.getElementById('modal-close');
-    const modalCancel    = document.getElementById('modal-cancel');
+    const addProjectBtn = document.getElementById('add-project-btn');
+    const projectModal = document.getElementById('project-modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalCancel = document.getElementById('modal-cancel');
     const addProjectForm = document.getElementById('add-project-form');
-    const projectsGrid   = document.getElementById('projects-grid');
+    const projectsGrid = document.getElementById('projects-grid');
 
     // --- Helpers ---
     function openModal() {
@@ -229,11 +244,11 @@ document.addEventListener('DOMContentLoaded', () => {
     addProjectForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const title    = document.getElementById('proj-title').value.trim();
+        const title = document.getElementById('proj-title').value.trim();
         const category = document.getElementById('proj-category').value.trim();
-        const desc     = document.getElementById('proj-desc').value.trim();
-        const tech     = document.getElementById('proj-tech').value.trim();
-        const link     = document.getElementById('proj-link').value.trim();
+        const desc = document.getElementById('proj-desc').value.trim();
+        const tech = document.getElementById('proj-tech').value.trim();
+        const link = document.getElementById('proj-link').value.trim();
 
         if (!title || !category || !desc) return;
 

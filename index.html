@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- حطي سكريبت الـ EmailJS هنا قبل قفلة الـ head -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "c9pU9ld4L_h5bsMqD",
+            });
+        })();
+    </script>
 </head>
 
 <body>
@@ -190,7 +199,6 @@
                     <h3><i class="fas fa-database"></i> Database</h3>
                     <div class="skill-list">
                         <span class="skill-item">SQL Server</span>
-
                         <span class="skill-item">Database Concepts</span>
                     </div>
                 </div>
@@ -213,6 +221,7 @@
                     <div class="skill-list">
                         <span class="skill-item">Git</span>
                         <span class="skill-item">GitHub</span>
+                        <span class="skill-item">Visual Studio</span>
                         <span class="skill-item">Codeforces</span>
                     </div>
                 </div>
@@ -284,8 +293,9 @@
 
                 <div class="service-card reveal">
                     <div class="service-icon"><i class="fas fa-database"></i></div>
-                    <h3>SQL & Database Solutions</h3>
-                    <p>Working with SQL Server, queries, joins, subqueries, grouping, and stored procedures.</p>
+                    <h3>Database Integration</h3>
+                    <p>Working with SQL databases (SQL Server, SQLite) using Entity Framework Core and LINQ to ensure
+                        data integrity.</p>
                 </div>
 
                 <div class="service-card reveal">
@@ -336,14 +346,6 @@
                     </div>
                 </div>
 
-                <!-- Future Projects -->
-                <div class="project-card coming-soon reveal">
-                    <i class="fas fa-rocket"></i>
-                    <h3>More Projects Coming Soon</h3>
-                    <p>This section will be updated as I complete more academic, personal, and real-world projects
-                        throughout my development journey.</p>
-                </div>
-
                 <!-- Add Project Card (owner only) -->
                 <div class="project-card add-project-card" id="add-project-btn" title="Add New Project">
                     <i class="fas fa-plus-circle"></i>
@@ -391,6 +393,7 @@
             </form>
         </div>
     </div>
+
     <!-- Achievements & Training Section -->
     <section id="achievements">
         <div class="container">
@@ -426,6 +429,12 @@
                         <li><i class="fas fa-check"></i> Data Types</li>
                         <li><i class="fas fa-check"></i> Problem Solving</li>
                     </ul>
+
+                    <a href="https://www.linkedin.com/posts/ranaromany_icpc-competitiveprogramming-problemsolving-activity-7344997935333441536--ZU4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEPk0G8BYzlA6CNwbIh1bDXZKQ932vjc1UQ"
+                        target="_blank" rel="noopener noreferrer" class="btn btn-outline"
+                        style="margin-top: 1.5rem; font-size: 0.9rem;">
+                        <i class="fab fa-linkedin"></i> View Post on LinkedIn
+                    </a>
                 </div>
 
                 <!-- NTI Python -->
@@ -434,20 +443,34 @@
                         <i class="fas fa-certificate"></i>
                         <h3>Programming Using Python</h3>
                     </div>
-                    <span class="achievement-platform">NTI (National Telecommunication Institute)</span>
-                    <p>Completed Programming Using Python Training at NTI.</p>
-                    <div class="achievement-score">95% Score Achievement</div>
+
+                    <span class="achievement-platform">
+                        NTI (National Telecommunication Institute)
+                    </span>
+
+                    <p>
+                        Successfully completed the Programming Using Python Summer Training
+                        at NTI, achieving a score above 95%.
+                    </p>
+
+                    <div class="achievement-score">95%+ Achievement Score</div>
+
                     <ul class="achievement-list">
                         <li><i class="fas fa-check"></i> Python Programming</li>
-                        <li><i class="fas fa-check"></i> OOP</li>
-                        <li><i class="fas fa-check"></i> Pandas</li>
-                        <li><i class="fas fa-check"></i> Python Libraries</li>
+                        <li><i class="fas fa-check"></i> Object-Oriented Programming (OOP)</li>
+                        <li><i class="fas fa-check"></i> File Handling & Modular Design</li>
+                        <li><i class="fas fa-check"></i> Data Visualization with Matplotlib</li>
                     </ul>
+
+                    <a href="https://www.linkedin.com/posts/ranaromany_certificate-of-completion-nti-summer-training-activity-7400483749915774976-OgFO?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEPk0G8BYzlA6CNwbIh1bDXZKQ932vjc1UQ"
+                        target="_blank" rel="noopener noreferrer" class="btn btn-outline"
+                        style="margin-top: 1.5rem; font-size: 0.9rem;">
+                        <i class="fab fa-linkedin"></i> View Certificate on LinkedIn
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Feedback Section -->
     <section id="feedback" style="background-color: rgba(0,0,0,0.02);">
         <div class="container">
@@ -458,7 +481,8 @@
             <div class="empty-state reveal">
                 <i class="far fa-comment-dots"></i>
                 <h3>No testimonials yet.</h3>
-                <p>This section will remain available and will be updated once genuine client feedback is received.</p>
+                <p>This section will remain available and will be updated once genuine client feedback is
+                    received.</p>
             </div>
         </div>
     </section>
@@ -469,9 +493,10 @@
             <div class="objective-content">
                 <p>
                     "My goal is to grow as a Software Engineer by continuously strengthening my programming,
-                    problem-solving, and web development skills, with a focus on .NET Full Stack Development. I aim to
-                    build practical, reliable software solutions that create real value for people and businesses while
-                    continuing to learn and grow through hands-on experience."
+                    problem-solving, and web development skills, with a focus on .NET Full Stack
+                    Development. I aim to build practical, reliable software solutions that create real
+                    value for people and
+                    businesses while continuing to learn and grow through hands-on experience."
                 </p>
             </div>
         </div>
@@ -484,8 +509,11 @@
                 <h2>Have a Project in Mind?</h2>
             </div>
 
-            <div class="contact-grid">
-                <div class="cta-info reveal">
+            <!-- أضفنا هنا تنسيق مباشر يخلي العنصرين جنب بعض على الشاشات الكبيرة -->
+            <div class="contact-grid" style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: flex-start;">
+
+                <!-- الجزء الأول (المعلومات وليه أنا) - أخد نص الشاشة -->
+                <div class="cta-info reveal" style="flex: 1; min-width: 300px;">
                     <h3>Let's Connect</h3>
                     <p>Tell me what you need, and let’s work together to turn your idea into a practical solution.</p>
                     <p>I care about delivering quality work, meeting agreed deadlines, and keeping you updated
@@ -507,16 +535,21 @@
                     <div class="contact-details">
                         <a href="mailto:romanyrana82@gmail.com" class="contact-item">
                             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <span>romanyrana82@gmail.com</span>
+                            <span>Send an Email</span>
                         </a>
                         <a href="https://wa.me/201551126918" target="_blank" class="contact-item">
                             <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-                            <span>+20 155 112 6918</span>
+                            <span>Chat on WhatsApp</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ranaromany" target="_blank" class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                            <span>Connect on LinkedIn</span>
                         </a>
                     </div>
                 </div>
 
-                <div class="contact-form reveal">
+                <!-- الجزء الثاني (الفورم) - أخد النص التاني وجنبه على اللابتوب وهينزل تحت لو الشاشة صغرت -->
+                <div class="contact-form reveal" style="flex: 1; min-width: 300px;">
                     <form id="contactForm">
                         <div class="form-alert" id="formAlert">
                             Thank you for your message! I will get back to you soon.
@@ -548,10 +581,10 @@
                         </button>
                     </form>
                 </div>
+
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-content">
